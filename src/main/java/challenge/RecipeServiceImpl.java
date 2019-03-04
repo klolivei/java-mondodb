@@ -11,10 +11,13 @@ public class RecipeServiceImpl implements RecipeService {
     @Autowired
     private RecipeRepository recipeRepository;
 
+    @Autowired
+    private RecipeCommentRepository recipeCommentRepository;
+
 	@Override
 	public Recipe save(Recipe recipe) {
-		this.recipeRepository.save(recipe);
-        return recipeRepository.save(recipe);
+
+        return this.recipeRepository.save(recipe);
 	}
 
 	@Override
