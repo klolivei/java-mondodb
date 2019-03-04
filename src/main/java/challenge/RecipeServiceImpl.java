@@ -22,17 +22,18 @@ public class RecipeServiceImpl implements RecipeService {
 
 	@Override
 	public void update(String id, Recipe recipe) {
-
+        recipe.setId(id);
+        this.recipeRepository.save(recipe);
 	}
 
 	@Override
 	public void delete(String id) {
-
+        this.recipeRepository.deleteById(id);
 	}
 
 	@Override
 	public Recipe get(String id) {
-		return null;
+		return this.recipeRepository.findById(id).get();
 	}
 
 	@Override

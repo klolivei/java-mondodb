@@ -2,10 +2,7 @@ package challenge;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/recipe")
@@ -18,16 +15,19 @@ public class RecipeController {
 		return service.save(recipe);
 	}
 
-	public void update() {
-		service.update(null, null);
+	@PutMapping("{id}")
+	public void update(@PathVariable String id, @RequestBody Recipe recipe) {
+		service.update(id, recipe);
 	}
 
-	public void delete() {
-		service.delete(null);
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable String id) {
+		service.delete(id);
 	}
 
-	public Recipe get() {
-		return service.get(null);
+	@GetMapping("{id}")
+	public Recipe get(@PathVariable String id) {
+		return service.get(id);
 	}
 
 	public List<Recipe> listByIngredient() {

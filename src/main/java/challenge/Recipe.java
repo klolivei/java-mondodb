@@ -20,6 +20,10 @@ public class Recipe {
     private List<String> ingredients;
     private List<Comment> comments;
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Recipe() {
     }
 
