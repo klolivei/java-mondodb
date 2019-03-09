@@ -1,28 +1,28 @@
 package challenge;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.xml.stream.events.Comment;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Classe para mapear a receita no MongoDB
  *
  */
-@Document( collection = "recipes")
+@Document
 public class Recipe {
+
     @Id
     private String id;
     private String title;
     private String description;
-    private List<Integer> likes;
+    private List<String> likes;
     private List<String> ingredients;
-    private List<Comment> comments;
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private List<RecipeComment>  comments;
 
     public Recipe() {
     }
@@ -31,23 +31,47 @@ public class Recipe {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public List<Integer> getLikes() {
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getLikes() {
         return likes;
+    }
+
+    public void setLikes(List<String> likes) {
+        this.likes = likes;
     }
 
     public List<String> getIngredients() {
         return ingredients;
     }
 
-    public List<Comment> getComments() {
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public List<RecipeComment> getComments() {
         return comments;
+    }
+
+    public void setComments(List<RecipeComment> comments) {
+        this.comments = comments;
     }
 }
